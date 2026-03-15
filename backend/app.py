@@ -169,9 +169,16 @@ def check_db_ok():
 
 # Run on startup regardless of how the app is launched (gunicorn or python app.py)
 with app.app_context():
-    db.create_all()
-    ensure_user_columns()
-    check_db_ok()
+    try:
+        _log("Initializing database...")
+        db.create_all()
+        ensure_user_columns()
+        check_db_ok()
+        _log("Database initialization complete.")
+    except Exception as e:
+        _log(f"CRITICAL: Database initialization failed: {e}")
+        import traceback
+        traceback.print_exc()
 
 if __name__ == "__main__":
     _log("Flask running at http://0.0.0.0:5000")
