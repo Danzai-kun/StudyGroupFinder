@@ -160,11 +160,13 @@ def check_db_ok():
         _log("Ensure PostgreSQL is running and database 'studygroupfinder' exists.")
 
 
+# Run on startup regardless of how the app is launched (gunicorn or python app.py)
+with app.app_context():
+    db.create_all()
+    ensure_user_columns()
+    check_db_ok()
+
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
-        ensure_user_columns()
-        check_db_ok()
     _log("Flask running at http://0.0.0.0:5000")
     _log("Frontend: run 'npm run dev' in frontend/, then open http://localhost:5173")
     app.run(debug=False, host="0.0.0.0", port=5000)
