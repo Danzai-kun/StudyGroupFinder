@@ -1,5 +1,4 @@
-// Relative URL: Vite proxy forwards /api to http://localhost:5000 (see vite.config.js)
-const API_BASE = '/api';
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
 async function request(endpoint, options = {}) {
   const url = `${API_BASE}${endpoint}`.replace(/([^:]\/)\/+/g, '$1');

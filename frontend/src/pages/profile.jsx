@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { api } from '../services/api';
-import GroupCard from '../components/GroupCard';
+import GroupCard from '../components/groupcard';
 
 const Profile = () => {
   const [user, setUser] = useState(null);

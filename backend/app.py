@@ -21,8 +21,11 @@ app = Flask(__name__)
 # CORS when frontend hits :5000 directly
 CORS(app, resources={r"/api/*": {"origins": "*", "supports_credentials": False}})
 
+from dotenv import load_dotenv
+load_dotenv()
+
 # Database — override with env DATABASE_URL if needed
-default_db = "postgresql://postgres:%23http_Khraw@localhost:5432/studygroupfinder"
+default_db = "postgresql://localhost/studygroupfinder"
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", default_db)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
