@@ -170,15 +170,27 @@ def check_db_ok():
 # Run on startup regardless of how the app is launched (gunicorn or python app.py)
 with app.app_context():
     try:
-        _log("Initializing database...")
+        _log("Initializing database tables...")
+        # Explicitly ensure models are known to SQLAlchemy
+        import models
         db.create_all()
+        _log("db.create_all() completed.")
+        
         ensure_user_columns()
-        check_db_ok()
-        _log("Database initialization complete.")
+        _log("ensure_user_columns() completed.")
+        
+        # This will raise if tables are missing
+        from models import User
+        User.query.limit(1).all()
+        _log("Database verification successful (users table exists).")
     except Exception as e:
-        _log(f"CRITICAL: Database initialization failed: {e}")
+        _log(f"!!! CRITICAL DATABASE ERROR !!!")
+        _log(f"Error type: {type(e).__name__}")
+        _log(f"Error message: {e}")
         import traceback
         traceback.print_exc()
+        # In production, we might want to crash here so Render shows the error clearly
+        # raise e 
 
 if __name__ == "__main__":
     _log("Flask running at http://0.0.0.0:5000")
