@@ -26,7 +26,14 @@ load_dotenv()
 
 # Database — override with env DATABASE_URL if needed
 default_db = "postgresql://localhost/studygroupfinder"
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", default_db)
+_db_url = os.environ.get("DATABASE_URL", default_db)
+# Log which DB we're connecting to (mask password for security)
+try:
+    _safe_url = _db_url.split("@")[-1] if "@" in _db_url else _db_url
+    print(f"[App] Connecting to database host: {_safe_url}", flush=True)
+except Exception:
+    pass
+app.config["SQLALCHEMY_DATABASE_URI"] = _db_url
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db.init_app(app)
