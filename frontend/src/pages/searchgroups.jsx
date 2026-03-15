@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import GroupCard from '../components/GroupCard';
+import GroupCard from '../components/groupcard';
 import { api } from '../services/api';
 
 const SearchGroups = () => {
