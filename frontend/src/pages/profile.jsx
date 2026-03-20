@@ -10,7 +10,7 @@ const Profile = () => {
     joined_groups: []
   });
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [setError] = useState('');
 
   useEffect(() => {
     const savedUser = localStorage.getItem('user');
