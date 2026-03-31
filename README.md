@@ -69,7 +69,17 @@ StudyGroupFinder/
    select a variant -> javascript
    use roll down-vite (experimental) -> Y
    ```
-3. Start the development server:
+3. Set up React 
+   ```bash
+   node -v
+   npm -v
+   npm create vite@latest <project-name>
+   select framework -> react
+   select a variant -> javascript
+   use roll down-vite (experimental) -> Y
+   ```
+
+4. Start the development server:
    ```bash
    npm run dev
    ```
