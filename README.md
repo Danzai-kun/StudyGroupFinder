@@ -57,14 +57,17 @@ StudyGroupFinder/
 
 ## ⚙️ Local Setup
 
-### Frontend Setup
+### Frontend Setup (React js)
 1. Navigate to the frontend directory:
    ```bash
    cd frontend
    ```
 2. Install dependencies:
    ```bash
-   npm install
+   npm create vite@latest <project-name>
+   select framework -> react
+   select a variant -> javascript
+   use roll down-vite (experimental) -> Y
    ```
 3. Start the development server:
    ```bash
@@ -79,26 +82,12 @@ StudyGroupFinder/
 2. Install Python dependencies:
    ```bash
    pip install -r requirements.txt
+   python -m venv env
+   pip install <package-name>
    ```
 
 3. Run the application:
    ```bash
    python app.py
    ```
-
-### Backend Setup (Node.js/Express)
-1. Navigate to the backend directory:
-   ```bash
-   cd backend
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Run the server:
-   ```bash
-   node server.js
-   ```
-
----
 *Developed for collaborative student success.*
