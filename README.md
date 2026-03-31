@@ -102,4 +102,5 @@ StudyGroupFinder/
    ```
 
 Github repo - https://github.com/Danzai-kun/StudyGroupFinder.git
+Youtube link - https://www.youtube.com/watch?v=fPqM87QM4uk
 *Developed for collaborative student success.*
