@@ -100,4 +100,6 @@ StudyGroupFinder/
    ```bash
    python app.py
    ```
+
+Github repo - https://github.com/Danzai-kun/StudyGroupFinder.git
 *Developed for collaborative student success.*
